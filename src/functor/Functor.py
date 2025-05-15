@@ -6,12 +6,12 @@ U = TypeVar("U")
 
 
 class Functor(ABC, Generic[T]):
-    val: T
+    value: T
 
     @classmethod
     @abstractmethod
     def of(cls, val: T) -> "Functor[T]":
-        pass
+        raise NotImplementedError("Cannot instantiate Functor directly.")
 
     @abstractmethod
     def fmap(self, f: Callable[[T], U]) -> "Functor[U]":
