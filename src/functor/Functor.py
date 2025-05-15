@@ -10,8 +10,8 @@ class Functor(ABC, Generic[T]):
 
     @classmethod
     @abstractmethod
-    def of(cls, val: T) -> "Functor[T]":
-        raise NotImplementedError("Cannot instantiate Functor directly.")
+    def of(cls, value: T) -> "Functor[T]":
+        pass
 
     @abstractmethod
     def fmap(self, f: Callable[[T], U]) -> "Functor[U]":
