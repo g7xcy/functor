@@ -4,15 +4,15 @@ import unittest
 
 
 class MaybeTest(unittest.TestCase):
-    def test_of_01(self):
-        x = Maybe.of(42)
-        self.assertIsInstance(x, Just)
-        self.assertIsInstance(x.value, int)
-        self.assertEqual(x.value, 42)
+    def test_of(self):
+        with self.assertRaises(NotImplementedError) as e:
+            Maybe.of(42)
+        self.assertEqual(e.exception.args[0], "Cannot instantiate Maybe directly. Use Just.of() or Nothing().")
 
-    def test_of_02(self):
-        x = Maybe.of(None)
-        self.assertEqual(x, Nothing.of())
+    def test_fmap(self):
+        with self.assertRaises(NotImplementedError):
+            x = Maybe(42)
+            x.fmap(None)
 
 
 class JustTest(unittest.TestCase):

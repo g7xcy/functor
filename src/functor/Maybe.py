@@ -11,13 +11,11 @@ class Maybe(Functor[T]):
         self.value = value
 
     @classmethod
-    def of(cls, value: Optional[T]) -> Union["Just[T]", "Nothing"]:
-        if value is None:
-            return Nothing()
-        return Just.of(value)
+    def of(cls, _):
+        raise NotImplementedError("Cannot instantiate Maybe directly. Use Just.of() or Nothing().")
 
-    def fmap(self, f: Callable[[T], U]) -> "Maybe[U]":
-        pass
+    def fmap(self, _: Callable[[T], U]) -> "Maybe[U]":
+        raise NotImplementedError()
 
 
 class Just(Maybe[T]):
